@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class Footer extends Component {
     render() {
@@ -6,7 +6,7 @@ export default class Footer extends Component {
             <div>
                 <footer className="py-5 bg-dark">
                     <div className="container">
-                        <p className="m-0 text-center text-white">Copyright © Your Website 2020</p>
+                        <p className="m-0 text-center text-white">Copyright © Your Website 2021</p>
                     </div>
                 </footer>
             </div>
