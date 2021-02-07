@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import ProductItem from './ProductItem';
 
 export default class ProductList extends Component {
-    data = [
-        {img: 'https://picsum.photos/id/237/500/325', title: 'First Item', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.'},
-        {img: 'https://picsum.photos/id/560/500/325', title: 'Second Item', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.'},
-        {img: 'https://picsum.photos/id/724/500/325', title: 'Third Item', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.'},
-        {img: 'https://picsum.photos/id/368/500/325', title: 'Four Item', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.'},
+    state = {
+        data: [],
+    }
 
-    ];
+    componentDidMount() {
+        axios.get('https://picsum.photos/v2/list?page=1&limit=4')
+            .then(res => {
+                const data = res.data;
+                data.map(item => this.setState({data: [...this.state.data, { src: item.download_url, title: item.title, description: `Photo was taken by ${item.author}`, link: item.url}]}));
+            })
+    }
+
     render() {
         return (
             <div>
                 <div className="row text-center">
-                    {this.data.map((item, index) => {
-                        return <ProductItem  key={index} item = {item}/>
-                    })}
+                    {this.state.data.map(item => <ProductItem item={item} />)}
                 </div>
             </div>
         )
