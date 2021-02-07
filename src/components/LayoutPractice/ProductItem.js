@@ -9,7 +9,7 @@ export default class ProductItem extends Component {
                 <div className="card h-100">
                     <img className="card-img-top" src={item.src} />
                     <div className="card-body">
-                        <h4 className="card-title">{item.author}</h4>
+                        <h4 className="card-title">{item.title}</h4>
                         <p className="card-text">{item.description}</p>
                     </div>
                     <div className="card-footer">
