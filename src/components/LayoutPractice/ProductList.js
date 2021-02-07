@@ -19,7 +19,7 @@ export default class ProductList extends Component {
         return (
             <div>
                 <div className="row text-center">
-                    {this.state.data.map(item => <ProductItem item={item} />)}
+                    {this.state.data.map((item, index) => <ProductItem key={index} item={item} />)}
                 </div>
             </div>
         )
