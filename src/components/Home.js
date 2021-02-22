@@ -3,7 +3,6 @@ import Header from './Header';
 import Model from './Model';
 import Glasses from './Glasses';
 
-
 export default class Home extends Component {
     state = {
         arrProduct: [
@@ -59,7 +58,6 @@ export default class Home extends Component {
                 id: 7,
                 price: 30,
                 name: "FENDI F8750",
-                // ${require('../glassesImage/model.jpg')
                 url: "./glassesImage/v7.png",
                 desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
             },
