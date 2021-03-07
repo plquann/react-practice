@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import Model from './Model';
-import Glasses from './Glasses';
+import Header from './TryingGlasses/Header';
+import Model from './TryingGlasses/Model';
+import Glasses from './TryingGlasses/Glasses';
 
 export default class Home extends Component {
     state = {
