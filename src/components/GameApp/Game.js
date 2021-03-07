@@ -7,13 +7,12 @@ import { connect } from 'react-redux';
 
 class Game extends Component {
     render() {
-        const { player, computer } = this.props.game;
         return (
             <div className="game">
                 <h1 className="text-center mt-3 text-white">ROCK - PAPER - SCISSORS</h1>
                 <div className="row text-center">
                     <div className="col-4">
-                        <Player choice={player} avatar={'./img/player.png'} />
+                        <Player isPlayer={true} avatar={'./img/player.png'} />
                         <KitBox />
                     </div>
                     <div className="col-4">
@@ -26,7 +25,7 @@ class Game extends Component {
                         </div>
                     </div>
                     <div className="col-4">
-                        <Player choice={computer} avatar={'./img/playerComputer.png'} />
+                        <Player isPlayer={false} avatar={'./img/playerComputer.png'} />
                     </div>
                 </div>
 
@@ -44,12 +43,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         playGame: () => {
-            let count = 10;
-            let randomComputer = setInterval(() => {
-                dispatch({ type: 'GAME_START' });
-                count++;
-                if (count >= 10) clearInterval(randomComputer);
-            }, 100);
+            dispatch({ type: 'GAME_START' });
         },
     }
 }

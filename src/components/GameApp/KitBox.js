@@ -2,19 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class KitBox extends Component {
+    styleActive = (choice, current) => {
+        return choice === current ? `3px solid orangered` : `1px solid orangered`;
+    }
     render() {
+        const { active } = this.props;
+        console.log(active)
+        console.log(this.styleActive(active, 'ROCK'))
         return (
             <div className="d-flex  justify-content-center" style={{ height: '15%' }}>
                 <img
                     className="img-kit"
                     src={'./img/bua.png'}
                     alt="{'./img/bua.png'}"
+                    style = {{border: `${this.styleActive(active, 'ROCK')}`}}
                     onClick={() => this.props.playerChoice('ROCK')}
                 />
                 <img
                     className="img-kit mx-3"
                     src={'./img/keo.png'}
                     alt="{'./img/keo.png'}"
+                    style = {{border: `${this.styleActive(active, 'SCISSORS')}`}}
                     onClick={() => this.props.playerChoice('SCISSORS')}
                 />
 
@@ -22,6 +30,7 @@ class KitBox extends Component {
                     className="img-kit"
                     src={'./img/bao.png'}
                     alt="{'./img/bao.png'}"
+                    style = {{border: `${this.styleActive(active, 'PAPER')}`}}
                     onClick={() => this.props.playerChoice('PAPER')}
                 />
 
@@ -30,7 +39,9 @@ class KitBox extends Component {
     }
 }
 const mapStateToProps = (state) => {
-    return;
+    return {
+        active: state.gameReducer.player,
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {

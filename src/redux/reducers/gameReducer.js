@@ -41,15 +41,15 @@ export const gameReducer = (state = initialState, { type, payload }) => {
             switch (isWon(state.player, computer)) {
                 case 1:
                     return {
-                        ...state, winner: 'player win!', won: state.won + 1, rounds: state.rounds + 1, computer,
+                        ...state, winner: 'I am Iron Man! Iron Man won!', won: state.won + 1, rounds: state.rounds + 1, computer,
                     };
                 case -1:
                     return {
-                        ...state, winner: 'computer win!', rounds: state.rounds + 1, computer,
+                        ...state, winner: 'I am inevitable! Thanos won!', rounds: state.rounds + 1, computer,
                     };
                 case 0:
                     return {
-                        ...state, winner: 'tie!', rounds: state.rounds + 1, computer,
+                        ...state, winner: 'Tie!!! Lets fight again!', rounds: state.rounds + 1, computer,
                     };
                 default:
                     return { ...state };
