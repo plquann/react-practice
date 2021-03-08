@@ -43,7 +43,16 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         playGame: () => {
-            dispatch({ type: 'GAME_START' });
+            let count = 0;
+            const randomComputer = setInterval(() => {
+                dispatch({ type: 'COMPUTER_PICK' });
+                count++;
+                if (count > 20) {
+                    clearInterval(randomComputer);
+                    dispatch({ type: 'GAME_START' });
+                }
+            }, 80);
+            // dispatch({ type: 'GAME_START' });
         },
     }
 }

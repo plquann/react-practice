@@ -7,8 +7,6 @@ class KitBox extends Component {
     }
     render() {
         const { active } = this.props;
-        console.log(active)
-        console.log(this.styleActive(active, 'ROCK'))
         return (
             <div className="d-flex  justify-content-center" style={{ height: '15%' }}>
                 <img
@@ -47,7 +45,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         playerChoice: (choice) => {
-            dispatch({ type: 'PLAYER_TURN', payload: choice })
+            dispatch({ type: 'PLAYER_PICK', payload: choice })
         }
     }
 }

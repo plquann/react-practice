@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import Bubble from './Bubble';
-import { connect } from 'react-redux';
 
-class Player extends Component {
+export default class Player extends Component {
     render() {
-        const { game, ownProps } = this.props;
+        const { isPlayer, avatar } = this.props;
 
         return (
             <div className="d-flex flex-column justify-content-center align-items-center">
-                {ownProps.isPlayer
-                    ? <Bubble choice={game.player} />
-                    : <Bubble choice={game.computer} />
-                }
+                <Bubble isPlayer={isPlayer} />
                 <div className="mt-3">
                     <img
-                        src={ownProps.avatar} alt={ownProps.avatar}
+                        src={avatar} alt={avatar}
                         style={{ width: 250, height: 250 }}
                     />
                 </div>
@@ -22,11 +18,3 @@ class Player extends Component {
         )
     }
 };
-
-const mapStateToProps = (state, ownProps) => {
-    return {
-        game: state.gameReducer,
-        ownProps: ownProps,
-    }
-}
-export default connect(mapStateToProps)(Player);

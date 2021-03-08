@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Bubble.css';
+import { connect } from 'react-redux';
 
-export default class Bubble extends Component {
+class Bubble extends Component {
     renderImage = (choice) => {
         switch (choice) {
             case 'ROCK':
@@ -14,17 +15,25 @@ export default class Bubble extends Component {
         }
     }
     render() {
-        const { choice } = this.props;
+        const { game, isPlayer } = this.props;
+        const choice = isPlayer ? game.player : game.computer;
         return (
             <div className="speech-bubble">
                 <img
                     src={this.renderImage(choice)} alt={this.renderImage(choice)}
-                    style={{ width: 80, height: 120, }}
+                    style={{ width: 80, height: 120 }}
                 />
             </div>
         )
     }
 };
+
+const mapStateToProps = (state) => {
+    return {
+        game: state.gameReducer,
+    }
+}
+export default connect(mapStateToProps)(Bubble);
 
 
 

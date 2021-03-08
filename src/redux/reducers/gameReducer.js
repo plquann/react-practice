@@ -27,29 +27,32 @@ const isWon = (player, computer) => {
 
 export const gameReducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case 'PLAYER_TURN': {
-            //alert(`${payload}`);
+        case 'PLAYER_PICK': {
             return { ...state, player: payload };
         }
+        case 'COMPUTER_PICK': {
+            return { ...state, computer: arrKit[rand()] };
+        }
         case 'GAME_START': {
-            if (!state.player)
-                return { ...state };
-
-            const computer = arrKit[rand()];
-            // alert(`${computer}`);
-
-            switch (isWon(state.player, computer)) {
+            switch (isWon(state.player, state.computer)) {
                 case 1:
                     return {
-                        ...state, winner: 'I am Iron Man! Iron Man won!', won: state.won + 1, rounds: state.rounds + 1, computer,
+                        ...state,
+                        winner: 'I am Iron Man! Iron Man won!',
+                        won: state.won + 1,
+                        rounds: state.rounds + 1,
                     };
                 case -1:
                     return {
-                        ...state, winner: 'I am inevitable! Thanos won!', rounds: state.rounds + 1, computer,
+                        ...state,
+                        winner: 'I am inevitable! Thanos won!',
+                        rounds: state.rounds + 1,
                     };
                 case 0:
                     return {
-                        ...state, winner: 'Tie!!! Lets fight again!', rounds: state.rounds + 1, computer,
+                        ...state,
+                        winner: 'Tie!!! Lets fight again!',
+                        rounds: state.rounds + 1,
                     };
                 default:
                     return { ...state };
